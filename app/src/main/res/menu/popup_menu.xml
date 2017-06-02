@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pop_friends"
+        android:icon="@drawable/fun_share_friends"
+        android:title="分享到朋友圈" />
+    <item
+        android:id="@+id/pop_qq"
+        android:icon="@drawable/fun_share_qq"
+        android:title="分享到QQ" />
+    <item
+        android:id="@+id/pop_weixin"
+        android:icon="@drawable/fun_share_weixin"
+        android:title="分享到微信" />
+    <item
+        android:id="@+id/pop_weibo"
+        android:icon="@drawable/fun_share_weibo"
+        android:title="分享到微博" />
+
+
+</menu>

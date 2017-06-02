@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:logo="@drawable/ic_title_home_default"
+        android:id="@+id/tb_bar"
+        android:background="#f90808"/>
+
+</LinearLayout>

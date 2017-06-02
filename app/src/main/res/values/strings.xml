@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">news</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
+    <string name="open_menu">打开</string>
+    <string name="close_menu">关闭</string>
+</resources>

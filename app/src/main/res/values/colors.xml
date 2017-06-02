@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#fc383eef</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="windowbackground">#e71010</color>
+    <color name="tabbackground">#fd0505</color>
+    <color name="tabindicatorcolor">#fffcfc</color>
+    <color name="tabtextcolor">#fafafa</color>
+    <!---->
+    <color name="refresh_progress_1">#536DFE</color>
+    <color name="refresh_progress_2">#f44336</color>
+    <color name="refresh_progress_3">#FF4081</color>
+
+</resources>
