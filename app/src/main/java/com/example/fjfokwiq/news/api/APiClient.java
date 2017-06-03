@@ -1,12 +1,18 @@
 package com.example.fjfokwiq.news.api;
 
 import com.example.fjfokwiq.news.MyApplication;
+import com.example.fjfokwiq.news.utlis.IntentStateUtli;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
+import okhttp3.CacheControl;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.internal.cache.CacheInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -23,21 +29,15 @@ public class APiClient {
     }
 
     APiClient() {
-        File cacheDirectory=new File(MyApplication.context.getCacheDir(),"cache");
-        if (!cacheDirectory.exists()){
-            try {
-                cacheDirectory.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        File httpCacheDirectory = new File(MyApplication.context.getCacheDir(), "responses");
         int cacheSize = 10 * 1024 * 1024; // 10 MiB
-        Cache cache = new Cache(cacheDirectory, cacheSize);
+        Cache cache = new Cache(httpCacheDirectory, cacheSize);
+
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new CacheInte())
-                .cache(cache)
-                .build();
+                .cache(cache).build();
+
 
         Retrofit news=new Retrofit
                 .Builder()

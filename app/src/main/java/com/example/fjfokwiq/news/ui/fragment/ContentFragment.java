@@ -33,7 +33,7 @@ public class ContentFragment extends Fragment {
         View view = inflater.inflate(R.layout.content_fg_layout, container, false);
         initView(view);
         initContent();
-        new StatusBarUtli().setTransparentStatusBar(getActivity(),0,bar);
+        new StatusBarUtli().setTransparentStatusBar(getActivity(), 0, bar);
         return view;
     }
 
@@ -52,6 +52,7 @@ public class ContentFragment extends Fragment {
         pager.setOffscreenPageLimit(1);
         pager.setAdapter(new ContentPagerAdapter(getChildFragmentManager(), fragmentList));
         layout.setupWithViewPager(pager);
+
 
 
     }
