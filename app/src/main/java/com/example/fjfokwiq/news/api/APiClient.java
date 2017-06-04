@@ -1,19 +1,11 @@
 package com.example.fjfokwiq.news.api;
 
 import com.example.fjfokwiq.news.MyApplication;
-import com.example.fjfokwiq.news.utlis.IntentStateUtli;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
-import okhttp3.CacheControl;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.internal.cache.CacheInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -35,7 +27,7 @@ public class APiClient {
 
 
         OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(new CacheInte())
+                .addInterceptor(new CacheInterceptor())
                 .cache(cache).build();
 
 

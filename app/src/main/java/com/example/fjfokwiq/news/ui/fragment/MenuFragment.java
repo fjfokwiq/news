@@ -6,19 +6,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.fjfokwiq.news.BuildConfig;
 import com.example.fjfokwiq.news.R;
 import com.example.fjfokwiq.news.bean.RecyclerDataModle;
 import com.example.fjfokwiq.news.ui.activity.LoginActivity;
-import com.example.fjfokwiq.news.ui.activity.MainActivity;
 import com.example.fjfokwiq.news.ui.adapter.RecyclerMenuAdapter;
-import com.example.fjfokwiq.news.widget.SlidingMenu;
 
 import java.util.ArrayList;
 import java.util.List;

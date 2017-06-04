@@ -37,9 +37,9 @@ public class GuideActivity  extends BaseActivity implements ViewPager.OnPageChan
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new StatusBarUtli().setTransparentStatusBar(this,0);
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        new StatusBarUtli().setTransparentStatusBar(this,0);
         initSharedPreferences();
         boolean first=shared.getBoolean("first", true);
         if (!first) {

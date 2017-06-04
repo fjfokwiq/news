@@ -1,6 +1,8 @@
 package com.example.fjfokwiq.news.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.view.menu.MenuPopupHelper;
 import android.support.v7.widget.PopupMenu;
@@ -11,7 +13,6 @@ import android.widget.ImageView;
 
 import com.example.fjfokwiq.news.R;
 import com.example.fjfokwiq.news.ui.base.BaseActivity;
-import com.example.fjfokwiq.news.utlis.StatusBarUtli;
 
 import java.lang.reflect.Field;
 
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity {
 
     private void initShare() {
         share.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
                 PopupMenu menu = new PopupMenu(MainActivity.this, v);
@@ -42,7 +44,14 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
-
+                            case R.id.pop_qq:
+                                break;
+                            case R.id.pop_friends:
+                                break;
+                            case R.id.pop_weibo:
+                                break;
+                            case R.id.pop_weixin:
+                                break;
                             
                         }
                         return true;
@@ -53,9 +62,7 @@ public class MainActivity extends BaseActivity {
                     field.setAccessible(true);
                     MenuPopupHelper helper = (MenuPopupHelper) field.get(menu);
                     helper.setForceShowIcon(true);
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
+                } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
 
