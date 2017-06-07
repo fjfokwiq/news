@@ -11,4 +11,8 @@
     <style name="Theme.Center" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash_icon</item>
     </style>
+
+    <style name="CustomCheckboxTheme" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_select</item>
+    </style>>
 </resources>

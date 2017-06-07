@@ -17,9 +17,6 @@ import com.example.fjfokwiq.news.utlis.StatusBarUtli;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by fjfokwiq on 2017/5/20.
- */
 
 public class ContentFragment extends Fragment {
     private Toolbar bar;

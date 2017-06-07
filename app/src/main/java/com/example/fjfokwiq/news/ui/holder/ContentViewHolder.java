@@ -1,6 +1,8 @@
 package com.example.fjfokwiq.news.ui.holder;
 
 import android.content.Context;
+import android.support.annotation.IdRes;
+import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,21 +23,31 @@ public class ContentViewHolder extends BaseHolder<NewsMessage> {
     public ImageView newsImg;
     public TextView newsTitle;
     public TextView newsContent;
-    public Context mContext;
-    public ContentViewHolder(View itemView,Context context) {
+    private SparseArrayCompat<View> views = new SparseArrayCompat<>();
+    public ContentViewHolder(View itemView) {
         super(itemView);
-        this.mContext=context;
-        card = (CardView) itemView.findViewById(R.id.cv_content_item);
-        newsImg = (ImageView) itemView.findViewById(R.id.iv_news);
-        newsTitle = (TextView) itemView.findViewById(R.id.tv_news_title);
-        newsContent = (TextView) itemView.findViewById(R.id.tv_news_content);
+        card = getView(itemView,R.id.cv_content_item);
+        newsImg = getView(itemView,R.id.iv_news);
+        newsTitle = getView(itemView,R.id.tv_news_title);
+        newsContent = getView(itemView,R.id.tv_news_content);
 
     }
+    private <T extends View>T getView(View itemView, @IdRes int id){
+        View view;
+        if (views.get(id) != null) {
+            view = views.get(id);
+        } else {
+            view = itemView.findViewById(id);
+            views.put(id,view);
+        }
+        return ((T) view);
+    }
+
 
     @Override
-    public void bindHolder(final NewsMessage modle) {
+    public void bindHolder(final NewsMessage modle,Context context) {
 
-      Glide.with(mContext)
+      Glide.with(context)
               .load(modle.getIcon())
               .skipMemoryCache(false)
               .diskCacheStrategy(DiskCacheStrategy.SOURCE)

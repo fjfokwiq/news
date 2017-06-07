@@ -1,6 +1,5 @@
 package com.example.fjfokwiq.news.ui.base;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawable(null);
         getSupportActionBar().hide();
-
         if (setUiLayout()!=0) {
             setContentView(setUiLayout());
         }

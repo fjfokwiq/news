@@ -42,7 +42,7 @@ public class RecyclerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        ((BaseHolder) holder).bindHolder(mList.get(position));
+        ((BaseHolder) holder).bindHolder(mList.get(position),mContext);
         ((MenuViewHolder) holder).card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

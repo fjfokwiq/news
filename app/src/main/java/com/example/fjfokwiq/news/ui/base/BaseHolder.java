@@ -1,5 +1,6 @@
 package com.example.fjfokwiq.news.ui.base;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -11,6 +12,6 @@ public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
         super(itemView);
     }
 
-    public abstract void bindHolder(T modle);
+    public abstract void bindHolder(T modle, Context context);
 
 }

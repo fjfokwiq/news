@@ -6,10 +6,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-/**
- * Created by fjfokwiq on 2017/4/14.
- */
-
 public class GuidePagerAdapter extends PagerAdapter {
     private List<View>views;
 
@@ -19,7 +15,7 @@ public class GuidePagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return views.size();
+        return views!=null?views.size():0;
     }
 
     @Override

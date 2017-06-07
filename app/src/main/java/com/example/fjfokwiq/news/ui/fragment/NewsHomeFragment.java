@@ -128,7 +128,13 @@ public class NewsHomeFragment extends Fragment {
 
     public void newsLoadError(Throwable throwable, Context context) {
         throwable.printStackTrace();
-        Toast.makeText(context, "请检查网络", Toast.LENGTH_SHORT).show();
+        Toast toast = null;
+        if (toast == null) {
+            toast = Toast.makeText(context, "请检查网络", Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            toast.setText("请检查网络");
+        }
     }
 
 

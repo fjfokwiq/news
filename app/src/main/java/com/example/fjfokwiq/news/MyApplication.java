@@ -5,10 +5,6 @@ import android.content.Context;
 
 import com.squareup.leakcanary.LeakCanary;
 
-/**
- * Created by fjfokwiq on 2017/4/20.
- */
-
 public class MyApplication extends Application {
 
     public static Context context;
@@ -16,14 +12,21 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context=this.getApplicationContext();
+        context = this.getApplicationContext();
+
+        loadLeakCanary();
+
+
+    }
+
+    /*加载内存泄漏分析*/
+    private void loadLeakCanary() {
         if (LeakCanary.isInAnalyzerProcess(this)) {
 
             return;
         }
-   
-        LeakCanary.install(this);
 
+        LeakCanary.install(this);
     }
 
 

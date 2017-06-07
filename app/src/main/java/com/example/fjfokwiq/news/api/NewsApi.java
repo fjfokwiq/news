@@ -12,8 +12,7 @@ import retrofit2.http.QueryMap;
 
 
 public interface NewsApi {
-   /* url="http://118.244.212.82:9092/newsClient/news_list" +
-            "?ver=1&subid=1&dir=1&nid=1&stamp=20140321&cnt=20";*/
+   /* url="http://118.244.212.82:9092/newsClient/news_list?ver=1&subid=1&dir=1&nid=1&stamp=20140321&cnt=20";*/
 
      @Headers("Cache-Control:public,max-age=3600")
      @GET("news_list")

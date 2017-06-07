@@ -11,7 +11,7 @@ import android.net.NetworkInfo;
 public class IntentStateUtli {
     private static ConnectivityManager manager;
 
-
+/*网络检测*/
     public static boolean isNetworkAvailable(Context context) {
         if(context !=null){
             ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

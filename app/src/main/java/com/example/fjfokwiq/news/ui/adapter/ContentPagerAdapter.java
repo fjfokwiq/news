@@ -3,13 +3,14 @@ package com.example.fjfokwiq.news.ui.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ContentPagerAdapter extends FragmentPagerAdapter {
-    List<Fragment> mData;
+    private List<Fragment> mData;
 
     public ContentPagerAdapter(FragmentManager fm, List<Fragment> mData) {
         super(fm);
@@ -24,13 +25,12 @@ public class ContentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return mData.size();
+        return mData!=null?mData.size():0;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         //super.destroyItem(container, position, object);
-
     }
 
     @Override

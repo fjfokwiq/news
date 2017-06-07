@@ -1,23 +1,31 @@
 package com.example.fjfokwiq.news.ui.fragment;
 
+import android.content.Intent;
+import android.content.pm.LabeledIntent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.fjfokwiq.news.R;
 import com.example.fjfokwiq.news.bean.RecyclerDataModle;
+import com.example.fjfokwiq.news.ui.activity.ImageSelectActivity;
 import com.example.fjfokwiq.news.ui.activity.LoginActivity;
 import com.example.fjfokwiq.news.ui.adapter.RecyclerMenuAdapter;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by fjfokwiq on 2017/5/20.
@@ -64,9 +72,21 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
                 DrawerLayout layout = (DrawerLayout) getActivity().findViewById(R.id.layout_draw);
                 layout.closeDrawers();
-                startActivity(LoginActivity.openLogin(getActivity()));
+                startActivityForResult(new Intent(getActivity(), ImageSelectActivity.class),2);
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            String imagePath = data.getStringExtra("ok");
+            if (!TextUtils.isEmpty(imagePath)) {
+                Glide.with(getActivity()).load(new File(imagePath)).into(login);
+            }
+        }
+
     }
 
     private void initMenuItem() {
@@ -91,12 +111,7 @@ public class MenuFragment extends Fragment {
 
             }
         });
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
     }
 
     private void initData() {

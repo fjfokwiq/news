@@ -32,12 +32,12 @@ public class RecyclerContentAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ContentViewHolder(inflater.inflate(R.layout.recycler_content_layout,parent,false),context);
+        return new ContentViewHolder(inflater.inflate(R.layout.recycler_content_layout,parent,false));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        ((BaseHolder) holder).bindHolder(newsList.get(position));
+        ((BaseHolder) holder).bindHolder(newsList.get(position),context);
         ((ContentViewHolder) holder).card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +61,6 @@ public class RecyclerContentAdapter extends RecyclerView.Adapter {
         this.listener=listener;
     }
     public interface onNewsItemListener{
-
         void onNewsItem(int position,NewsMessage message);
     }
 }
