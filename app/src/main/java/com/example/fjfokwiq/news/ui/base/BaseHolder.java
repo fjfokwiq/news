@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.fjfokwiq.news.bean.RecyclerDataModle;
 
 
 public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
@@ -12,6 +11,6 @@ public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
         super(itemView);
     }
 
-    public abstract void bindHolder(T modle, Context context);
+    public abstract void bindHolder(T module, Context context);
 
 }

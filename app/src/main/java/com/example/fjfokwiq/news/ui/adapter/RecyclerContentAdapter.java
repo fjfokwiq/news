@@ -11,12 +11,8 @@ import com.example.fjfokwiq.news.bean.NewsMessage;
 import com.example.fjfokwiq.news.ui.base.BaseHolder;
 import com.example.fjfokwiq.news.ui.holder.ContentViewHolder;
 
-import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by fjfokwiq on 2017/5/6.
- */
 
 public class RecyclerContentAdapter extends RecyclerView.Adapter {
     private List<NewsMessage> newsList;

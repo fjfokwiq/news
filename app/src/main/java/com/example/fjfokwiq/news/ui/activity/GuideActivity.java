@@ -13,35 +13,27 @@ import android.widget.LinearLayout;
 import com.example.fjfokwiq.news.ui.adapter.GuidePagerAdapter;
 import com.example.fjfokwiq.news.R;
 import com.example.fjfokwiq.news.ui.base.BaseActivity;
-import com.example.fjfokwiq.news.utlis.StatusBarUtli;
+import com.example.fjfokwiq.news.utlis.CommonUtil;
+import com.example.fjfokwiq.news.utlis.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by fjfokwiq on 2017/4/16.
- */
 
 public class GuideActivity  extends BaseActivity implements ViewPager.OnPageChangeListener {
     private ViewPager pager;
     private LinearLayout layout;
     private int[] img = {R.drawable.bd, R.drawable.small, R.drawable.wy, R.drawable.welcome};
-    private List<View> views;
     private GuidePagerAdapter adapter;
     private ImageView[] point;
-    private int currentItem;
-    private SharedPreferences shared;
-    private SharedPreferences.Editor editor;
+
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        new StatusBarUtli().setTransparentStatusBar(this,0);
+        new StatusBarUtil().setTransparentStatusBar(this,0);
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
-        initSharedPreferences();
-        boolean first=shared.getBoolean("first", true);
+        boolean first= CommonUtil.getPreferences().getBoolean("first", true);
         if (!first) {
             startActivity(new Intent(this,MainActivity.class));
             finish();
@@ -61,25 +53,19 @@ public class GuideActivity  extends BaseActivity implements ViewPager.OnPageChan
     }
 
 
-    private void initSharedPreferences() {
-        shared = getSharedPreferences("runMessage", MODE_PRIVATE);
-        editor=shared.edit();
-
-    }
-
     private void initPoint() {
         point = new ImageView[img.length];
         resetPoint();
-        currentItem = 0;
+        int currentItem = 0;
         point[currentItem].setImageResource(R.drawable.point1);
     }
 
 
     private void initData() {
-        views = new ArrayList<>();
-        for (int i = 0; i < img.length; i++) {
+        List<View> views = new ArrayList<>();
+        for (int anImg : img) {
             ImageView image = new ImageView(this);
-            image.setBackgroundResource(img[i]);
+            image.setBackgroundResource(anImg);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
@@ -116,8 +102,8 @@ public class GuideActivity  extends BaseActivity implements ViewPager.OnPageChan
             finish();
             overridePendingTransition(android.R.anim.slide_in_left,
                     android.R.anim.slide_in_left);
-            editor.putBoolean("first", false);
-            editor.commit();
+            CommonUtil.getEditor().putBoolean("first", false);
+            CommonUtil.getEditor().apply();
         }
     }
 

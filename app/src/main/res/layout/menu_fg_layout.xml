@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,10 +8,17 @@
     <com.example.fjfokwiq.news.widget.CircleImageView
         android:id="@+id/iv_login"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
         android:src="@drawable/biz_pc_main_info_profile_avatar_bg_dark" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#ffffff" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_menu"
@@ -18,5 +26,35 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#00ffffff"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="true"
+            android:id="@+id/cv_reset_login"
+            >
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="注销"
+                android:textColor="#ffffff"
+                />
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
 
 </LinearLayout>

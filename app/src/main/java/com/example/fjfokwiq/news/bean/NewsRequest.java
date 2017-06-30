@@ -2,9 +2,6 @@ package com.example.fjfokwiq.news.bean;
 
 import java.util.List;
 
-/**
- * Created by fjfokwiq on 2017/5/1.
- */
 
 public class NewsRequest {
 

@@ -10,9 +10,11 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.fjfokwiq.news.R;
 import com.example.fjfokwiq.news.ui.base.BaseActivity;
+import com.example.fjfokwiq.news.utlis.CommonUtil;
 
 import java.lang.reflect.Field;
 
@@ -21,6 +23,8 @@ public class MainActivity extends BaseActivity {
     private ImageView home;
     private ImageView share;
     private DrawerLayout layout;
+    private long currentTime;
+    private PopupMenu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class MainActivity extends BaseActivity {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                PopupMenu menu = new PopupMenu(MainActivity.this, v);
+              menu = new PopupMenu(MainActivity.this, v);
                 menu.getMenuInflater().inflate(R.menu.popup_menu,menu.getMenu());
 
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -73,6 +77,21 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        long time=System.currentTimeMillis();
+        if (time - currentTime > 2000) {
+            if (layout.isDrawerOpen(Gravity.LEFT)) {
+                layout.closeDrawer(Gravity.LEFT);
+            } else {
+                CommonUtil.showToast(MainActivity.this,"再按一次退出");
+                currentTime = time;
+            }
+        } else {
+            super.onBackPressed();
+        }
+
+    }
 
     private void initMenuOpen() {
         home.setOnClickListener(new View.OnClickListener() {
@@ -92,10 +111,14 @@ public class MainActivity extends BaseActivity {
 
 
     private void initView() {
-        home = (ImageView) findViewById(R.id.iv_home);
+       home = (ImageView) findViewById(R.id.iv_home);
         share = (ImageView) findViewById(R.id.iv_share);
         layout = (DrawerLayout) findViewById(R.id.layout_draw);
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

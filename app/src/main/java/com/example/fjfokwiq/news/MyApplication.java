@@ -3,6 +3,7 @@ package com.example.fjfokwiq.news;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.fjfokwiq.news.utlis.CommonUtil;
 import com.squareup.leakcanary.LeakCanary;
 
 public class MyApplication extends Application {
@@ -13,7 +14,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this.getApplicationContext();
-
+        CommonUtil.initPreferences();
         loadLeakCanary();
 
 

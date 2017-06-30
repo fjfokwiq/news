@@ -7,23 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fjfokwiq.news.R;
-import com.example.fjfokwiq.news.bean.RecyclerDataModle;
+import com.example.fjfokwiq.news.bean.menuItemData;
 import com.example.fjfokwiq.news.ui.holder.MenuViewHolder;
 import com.example.fjfokwiq.news.ui.base.BaseHolder;
 
 import java.util.List;
 
-/**
- * Created by fjfokwiq on 2017/4/21.
- */
-
 public class RecyclerMenuAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private LayoutInflater inflater;
-    private List<RecyclerDataModle> mList;
+    private List<menuItemData> mList;
     private Context mContext;
     private onMenuItemListener listener;
 
-    public void addData(List<RecyclerDataModle> mList) {
+    public void addData(List<menuItemData> mList) {
         this.mList = mList;
     }
 

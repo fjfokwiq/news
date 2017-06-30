@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -12,11 +11,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.example.fjfokwiq.news.MyApplication;
 import com.example.fjfokwiq.news.R;
 import com.example.fjfokwiq.news.bean.NewsMessage;
 import com.example.fjfokwiq.news.ui.base.BaseActivity;
-import com.example.fjfokwiq.news.utlis.IntentStateUtli;
+import com.example.fjfokwiq.news.utlis.CommonUtil;
 
 public class NewsWebActivity extends BaseActivity {
     private static final String CLIENT_MESSAGE = "message";
@@ -36,7 +34,6 @@ public class NewsWebActivity extends BaseActivity {
         initWeb();
         NewsMessage message = (NewsMessage) getIntent().getSerializableExtra(CLIENT_MESSAGE);
         if (message != null) {
-            Log.d("fjfokwiq", message.getLink());
             web.loadUrl(message.getLink());
         }
     }
@@ -44,7 +41,7 @@ public class NewsWebActivity extends BaseActivity {
     private void initWeb() {
         web = (WebView) findViewById(R.id.wv_news);
         WebSettings settings = web.getSettings();
-        if (IntentStateUtli.isNetworkAvailable(MyApplication.context)) {
+        if (CommonUtil.isNetworkAvailable()) {
             settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         } else {
             settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);

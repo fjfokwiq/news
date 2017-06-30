@@ -11,13 +11,16 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-
 public class APiClient {
     public static final String BASE_URL = "http://118.244.212.82:9092/newsClient/";
+    public static final String LOGIN_URL = "http://192.168.116.2:8080/LoginServer/";
     public NewsApi newsService;
-
+    public LoginAPi loginService;
     public NewsApi getNewsService() {
         return newsService;
+    }
+    public LoginAPi getLoginService() {
+        return loginService;
     }
 
     APiClient() {
@@ -31,15 +34,23 @@ public class APiClient {
                 .cache(cache).build();
 
 
-        Retrofit news=new Retrofit
+        Retrofit news = new Retrofit
                 .Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+        Retrofit login = new Retrofit
+                .Builder()
+                .baseUrl(LOGIN_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
 
         newsService = news.create(NewsApi.class);
+
+        loginService = login.create(LoginAPi.class);
     }
 
 }

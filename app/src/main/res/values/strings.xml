@@ -4,4 +4,8 @@
     <string name="close">关闭</string>
     <string name="open_menu">打开</string>
     <string name="close_menu">关闭</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_register_page">RegisterPageActivity</string>
 </resources>

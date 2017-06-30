@@ -9,11 +9,8 @@ import android.view.ViewGroup;
 
 import com.example.fjfokwiq.news.R;
 
-/**
- * Created by fjfokwiq on 2017/5/30.
- */
 
-public class NewsSocietyFragement extends Fragment {
+public class NewsSocietyFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

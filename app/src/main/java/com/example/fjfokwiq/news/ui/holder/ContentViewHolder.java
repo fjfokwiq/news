@@ -12,8 +12,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.fjfokwiq.news.R;
 import com.example.fjfokwiq.news.bean.NewsMessage;
-import com.example.fjfokwiq.news.bean.RecyclerDataModle;
-import com.example.fjfokwiq.news.ui.activity.NewsWebActivity;
 import com.example.fjfokwiq.news.ui.base.BaseHolder;
 
 
@@ -45,16 +43,16 @@ public class ContentViewHolder extends BaseHolder<NewsMessage> {
 
 
     @Override
-    public void bindHolder(final NewsMessage modle,Context context) {
+    public void bindHolder(final NewsMessage module, Context context) {
 
       Glide.with(context)
-              .load(modle.getIcon())
+              .load(module.getIcon())
               .skipMemoryCache(false)
               .diskCacheStrategy(DiskCacheStrategy.SOURCE)
               .placeholder(R.drawable.defaultpic)
               .error(R.drawable.sorry)
               .into(newsImg);
-        newsTitle.setText(modle.getTitle());
-        newsContent.setText(modle.getSummary());
+        newsTitle.setText(module.getTitle());
+        newsContent.setText(module.getSummary());
     }
 }

@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fjfokwiq.news.R;
-import com.example.fjfokwiq.news.bean.RecyclerDataModle;
+import com.example.fjfokwiq.news.bean.menuItemData;
 import com.example.fjfokwiq.news.ui.base.BaseHolder;
 
 
-public class MenuViewHolder extends BaseHolder<RecyclerDataModle> {
+public class MenuViewHolder extends BaseHolder<menuItemData> {
      public ImageView menuIcon;
      public TextView menuName;
      public TextView menuEnglish;
@@ -38,10 +38,10 @@ public class MenuViewHolder extends BaseHolder<RecyclerDataModle> {
         return ((T) view);
     }
     @Override
-    public void bindHolder(final RecyclerDataModle modle,Context context) {
-        menuIcon.setImageResource(modle.menuIcon);
-        menuName.setText(modle.menuName);
-        menuEnglish.setText(modle.menuEnglish);
+    public void bindHolder(final menuItemData module, Context context) {
+        menuIcon.setImageResource(module.menuIcon);
+        menuName.setText(module.menuName);
+        menuEnglish.setText(module.menuEnglish);
     }
 
 

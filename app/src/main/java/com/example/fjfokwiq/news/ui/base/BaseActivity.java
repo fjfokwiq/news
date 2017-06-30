@@ -4,21 +4,19 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by fjfokwiq on 2017/5/1.
- */
+import com.example.fjfokwiq.news.utlis.StatusBarUtil;
+
 
 public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawable(null);
-        getSupportActionBar().hide();
-        if (setUiLayout()!=0) {
-            setContentView(setUiLayout());
-        }
-    }
+        setContentView(setUiLayout());
+        StatusBarUtil util = new StatusBarUtil();
+        util.setTransparentStatusBar(this, 0);
 
+    }
 
 
     protected abstract int setUiLayout();

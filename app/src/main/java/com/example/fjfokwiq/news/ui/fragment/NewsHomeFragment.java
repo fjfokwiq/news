@@ -8,25 +8,18 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.SparseBooleanArray;
-import android.util.SparseIntArray;
-import android.util.SparseLongArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.example.fjfokwiq.news.R;
 import com.example.fjfokwiq.news.api.ApiFactory;
-import com.example.fjfokwiq.news.api.NewsApi;
 import com.example.fjfokwiq.news.bean.NewsMessage;
 import com.example.fjfokwiq.news.bean.NewsRequest;
 import com.example.fjfokwiq.news.ui.activity.NewsWebActivity;
 import com.example.fjfokwiq.news.ui.adapter.RecyclerContentAdapter;
+import com.example.fjfokwiq.news.utlis.CommonUtil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,9 +31,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class NewsHomeFragment extends Fragment {
     private RecyclerView news_list;
-    private LinearLayoutManager manager;
     private RecyclerContentAdapter mAdapter;
-    private List<NewsMessage> newsList;
     private SwipeRefreshLayout fresh;
 
     @Nullable
@@ -76,9 +67,9 @@ public class NewsHomeFragment extends Fragment {
     }
 
     private void initRecycler() {
-        manager = new LinearLayoutManager(getContext());
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
         news_list.setLayoutManager(manager);
-        newsList = new ArrayList<>();
+        List<NewsMessage> newsList = new ArrayList<>();
         mAdapter = new RecyclerContentAdapter(newsList, getContext());
         news_list.setAdapter(mAdapter);
         loadNews();
@@ -99,7 +90,7 @@ public class NewsHomeFragment extends Fragment {
                 .subscribe(new Consumer<NewsRequest>() {
                     @Override
                     public void accept(@NonNull NewsRequest newsRequest) throws Exception {
-                        newsLoadSucceed(newsRequest, news_list, getContext());
+                        newsLoadSucceed(newsRequest);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -122,19 +113,13 @@ public class NewsHomeFragment extends Fragment {
     }
 
 
-    public void newsLoadSucceed(NewsRequest newsRequest, RecyclerView news_list, Context context) {
+    public void newsLoadSucceed(NewsRequest newsRequest) {
         mAdapter.addData(newsRequest.getData());
     }
 
     public void newsLoadError(Throwable throwable, Context context) {
         throwable.printStackTrace();
-        Toast toast = null;
-        if (toast == null) {
-            toast = Toast.makeText(context, "请检查网络", Toast.LENGTH_SHORT);
-            toast.show();
-        } else {
-            toast.setText("请检查网络");
-        }
+        CommonUtil.showToast(getActivity(),"请检查网络");
     }
 
 
