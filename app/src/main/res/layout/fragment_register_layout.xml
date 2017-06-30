@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <android.support.design.widget.TextInputEditText
+        android:layout_marginTop="150dp"
+        android:id="@+id/et_reg_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="账号" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/et_reg_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="密码" />
+
+    <Button
+        android:id="@+id/bt_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF106EE9"
+        android:text="注册" />
+</LinearLayout>

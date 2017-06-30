@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="LoginServer"
+  id="myeclipse.1498446211438"
+  context-root="/LoginServer"
+  j2ee-spec="5.0"
+  archive="LoginServer.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
