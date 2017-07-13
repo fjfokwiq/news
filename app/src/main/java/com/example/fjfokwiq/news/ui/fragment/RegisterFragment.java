@@ -51,6 +51,8 @@ public class RegisterFragment extends Fragment {
                 String regInfo = "{" + "\"username\":" + user + "," + "\"password\":" + pass + "}";
                 if (!TextUtils.isEmpty(user) && !TextUtils.isEmpty(regInfo)) {
                     register(regInfo,v);
+                }else {
+                    CommonUtil.showSnackBar(v,"请输入注册的账号或密码");
                 }
             }
         });

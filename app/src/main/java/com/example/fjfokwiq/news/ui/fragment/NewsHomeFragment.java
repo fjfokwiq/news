@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
@@ -34,6 +35,7 @@ public class NewsHomeFragment extends Fragment {
     private RecyclerContentAdapter mAdapter;
     private SwipeRefreshLayout fresh;
 
+    private Observable<NewsRequest>newsRequestObservable;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class NewsHomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        newsRequestObservable = ApiFactory.getNewsService().getNewsJson(buildUrl());
         initRecycler();
         initFresh();
 
@@ -84,7 +87,7 @@ public class NewsHomeFragment extends Fragment {
     }
 
     public void loadNews() {
-        ApiFactory.getNewsService().getNewsJson(buildUrl())
+        newsRequestObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<NewsRequest>() {
@@ -102,7 +105,7 @@ public class NewsHomeFragment extends Fragment {
 
     private Map buildUrl() {
                /* ?ver=1&subid=1&dir=1&nid=1&stamp=20140321&cnt=20"*/
-        Map<String, Integer> params = new ArrayMap<>();
+        ArrayMap<String, Integer> params = new ArrayMap<>();
         params.put("ver", 1);
         params.put("subid", 1);
         params.put("dir", 1);

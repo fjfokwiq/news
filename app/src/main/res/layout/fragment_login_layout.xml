@@ -7,8 +7,8 @@
     >
  <com.example.fjfokwiq.news.widget.CircleImageView
      android:layout_marginTop="25dp"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
+     android:layout_width="150dp"
+     android:layout_height="125dp"
      android:layout_gravity="center"
      android:id="@+id/iv_login_page"
      android:src="@drawable/biz_pc_main_info_profile_avatar_bg_dark"
@@ -46,7 +46,7 @@
 
 
     <Button
-        android:id="@+id/bt_login"
+        android:id="@+id/bt_page_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FF106EE9"

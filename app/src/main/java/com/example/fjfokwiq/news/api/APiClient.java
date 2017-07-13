@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APiClient {
     public static final String BASE_URL = "http://118.244.212.82:9092/newsClient/";
-    public static final String LOGIN_URL = "http://192.168.116.2:8080/LoginServer/";
+    public static final String LOGIN_URL = "http://192.168.1.104:8080/LoginServer/";
     public NewsApi newsService;
     public LoginAPi loginService;
     public NewsApi getNewsService() {

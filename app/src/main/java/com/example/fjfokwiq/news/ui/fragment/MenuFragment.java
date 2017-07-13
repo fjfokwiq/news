@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -45,6 +46,7 @@ public class MenuFragment extends Fragment {
     private String[] menuName = {"新闻", "地址", "图片", "收藏", "信息"};
 
     private CardView card;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,7 @@ public class MenuFragment extends Fragment {
         initMenuItem();
         initLogin();
         logOut();
-        String path=CommonUtil.getPreferences().getString("imagePath", "");
+        String path = CommonUtil.getPreferences().getString("imagePath", "");
         if (!TextUtils.isEmpty(path)) {
             Glide.with(getActivity()).load(new File(path)).into(login);
 
@@ -87,7 +89,8 @@ public class MenuFragment extends Fragment {
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommonUtil.getEditor().putBoolean("isLogin",false).apply();
+                CommonUtil.getEditor().putBoolean("isLogin", false).apply();
+                CommonUtil.getEditor().putString("text", "").apply();
                 username.setText("");
                 Glide.with(getActivity())
                         .load(R.drawable.biz_pc_main_info_profile_avatar_bg_dark).into(login);
@@ -119,17 +122,18 @@ public class MenuFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         String imagePath = null;
+        String text = null;
         if (resultCode == RESULT_OK) {
             if (requestCode == CommonUtil.REQUEST_CODE_LOGIN) {
                 imagePath = data.getStringExtra("avatarPath");
-                String text = data.getStringExtra("username");
+                text = data.getStringExtra("username");
+                CommonUtil.getEditor().putString("text", text).apply();
                 username.setText(text);
-                CommonUtil.getEditor().putString("imagePath",imagePath).apply();
-                CommonUtil.getEditor().putString("text",text).apply();
             } else if (requestCode == CommonUtil.REQUEST_CODE_SELECT) {
                 imagePath = data.getStringExtra("ok");
             }
         }
+        CommonUtil.getEditor().putString("imagePath", imagePath).apply();
         if (!TextUtils.isEmpty(imagePath)) {
             Glide.with(getActivity()).load(new File(imagePath)).into(login);
 
@@ -137,15 +141,16 @@ public class MenuFragment extends Fragment {
 
 
     }
-/*初始化菜单项点击*/
+
+    /*初始化菜单项点击*/
     private void initMenuItem() {
         menuList.setLayoutManager(new LinearLayoutManager(getContext()));
         menuList.setAdapter(adapter);
         adapter.setOnMenuItemListener(new RecyclerMenuAdapter.onMenuItemListener() {
             @Override
             public void onMenuItem(int position) {
-                DrawerLayout layout = (DrawerLayout) getActivity().findViewById(R.id.layout_draw);
-                layout.closeDrawers();
+                SlidingPaneLayout layout = (SlidingPaneLayout) getActivity().findViewById(R.id.layout_draw);
+                layout.closePane();
                 switch (position) {
                     case 0:
 
